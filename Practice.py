@@ -541,7 +541,276 @@ print(random.sample([i for i in range(1,1001) if i%5==0 and i%7==0],5))'''
 s = input("Enter the string:")
 print(compress(s))'''
    
-      
+
+# coding: utf-8
+
+# In[12]:
+
+
+a=[int(x) for x in input().split()]
+def ev(a):
+    return [x for x in a if x % 2 != 0] 
+ev(a)
+
+
+# In[18]:
+
+
+a=[int(x) for x in input().split()]
+def ev(a):
+    return [x for x in a if ( x % 5 != 0 or x % 7 != 0 )] 
+ev(a)
+
+
+# In[19]:
+
+
+a=[int(x) for x in input().split()]
+def ev(a):
+    return [x for x in a if ( a.index(x)%2!=0 )] 
+ev(a)
+
+
+# In[23]:
+
+
+a=[int(x) for x in input().split()]
+def ev(a):
+    del a[1:5]
+    return a
+ev(a)
+
+
+# In[26]:
+
+
+a=[int(x) for x in input().split('*')]
+def genar(a):
+    for i in range(0,4):
+        x= [[[0 for y in range(a[i])]for yy in range(a[i+1])]for yyy in range(a[i+2])]
+        return x
+print(genar(a))
+
+
+# In[27]:
+
+
+a=[int(x) for x in input().split()]
+def ev(a):
+    del a[4:6]
+    del a[0]
+    return a
+ev(a)
+
+
+# In[28]:
+
+
+a=[int(x) for x in input().split()]
+def ev(a):
+       return [x for x in a if x!=24]
+ev(a)
+
+
+# In[31]:
+
+
+a=[int(x) for x in input().split()]
+b=[int(y) for y in input().split()]
+def inter(a,b):
+    return [x for x in a if x in b]
+print(inter(a,b))
+
+
+# In[36]:
+
+
+def remdup(x):
+    return list(reversed(list(dict.fromkeys(x))))
+remdup([int(x) for x in input().split(',')])
+
+
+# In[38]:
+
+
+class Person(object):
+    def getGender( self ):
+        return "Unknown"
+
+class Male( Person ):
+    def getGender( self ):
+        return "Male"
+
+class Female( Person ):
+    def getGender( self ):
+        return "Female"
+
+aMale = Male()
+aFemale= Female()
+print (aMale.getGender())
+print (aFemale.getGender())
+
+
+# In[39]:
+
+
+test_str = input ()
+res = {} 
+res1 = ''.join(sorted(test_str))
+res2 = str(res1)
+for keys in res2: 
+    res[keys] = res.get(keys, 0) + 1
+
+for i in res:
+    if i!=' ':
+        print(f'{i},{res[i]}')
+
+
+# In[ ]:
+
+
+a=input()
+print(a[::-1])
+
+
+# In[2]:
+
+
+a=input()
+def ev(a):
+       return a[::2]
+print(ev(a))
+
+
+# In[5]:
+
+
+from itertools import permutations
+a=[int(x) for x in input().split()]
+print(list(permutations(a)))
+
+
+# In[4]:
+
+
+def solve(numheads,numlegs):
+    ns='No solutions!'
+    for i in range(numheads+1):
+        for j in range(numheads+1):
+            if 2*i+4*j==numlegs:
+                if i+j==numheads:
+                    return i,j
+    return ns,ns
+
+numheads=35
+numlegs=94
+solutions=solve(numheads,numlegs)
+print (solutions)
+
+
+# In[10]:
+
+
+i = int(input())
+lis = list(map(int,input().strip().split()))[:i]
+z = max(lis)
+while max(lis) == z:
+    lis.remove(max(lis))
+
+print (max(lis))
+
+
+# In[19]:
+
+
+i=input()
+w=int(input())
+for y in range(0,len(i)):
+    print(i[:w])
+    i=i[w:]
+    if i=='':
+        break
+
+
+# In[68]:
+
+
+
+
+n = int(input())
+for i in range(n):
+    s = "-".join(chr(ord('a')+n-j-1) for j in range(i+1))
+    print((s+s[::-1][1:]).center(n*4-3,'-'))
+for i in range(n,1,-1):
+    s = "-".join(chr(ord('a')+n-j-1) for j in range(i-1))
+    print((s+s[::-1][1:]).center(n*4-3,'-'))    
+
+
+
+
+# In[74]:
+
+
+import datetime 
+import calendar 
+  
+def findDay(date): 
+    x = datetime.datetime.strptime(date, '%m %d %Y').weekday() 
+    print(x)
+    return (calendar.day_name[x]).upper()
+date = '08 05 2015'
+print(findDay(date)) 
+
+
+# In[90]:
+
+
+a=[int(x) for x in input().split()]
+b=[int(y) for y in input().split()]
+def inter(a,b):
+    a1=[x for x in a if x not in b]
+    b1=[x for x in b if x not in a]
+    a1.sort()
+    b1.sort()
+    c1=a1+b1
+    c1.sort()
+    yield c1
+for i in inter(a,b):
+    print(*i,sep='\n')
+
+
+# In[ ]:
+
+
+from collections import OrderedDict
+
+n = int(input())
+d = OrderedDict()
+for i in range(n):
+    word = input()
+    d[word] = d.get(word, 0) + 1
+    print(d)
+print(len(d))
+for v in d.values():
+    print(v, end=' ')
+
+
+# In[9]:
+
+
+test_str = input ()
+res = {} 
+res1 = ''.join(test_str)
+res2 = str(res1)
+
+for keys in res2: 
+    res[keys] = res.get(keys, 0) + 1
+
+for i in {k: v for k, v in sorted(res.items(), key=lambda item: item[1])}:
+    if i!=' ':
+        print(f'{i} {res[i]}')
+
+     
 
 
 
